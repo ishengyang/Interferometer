@@ -12,6 +12,53 @@
 %\usepackage{subfigure}
 %\usepackage{color}
 %\input{rgb}
+\usepackage{slashed}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{listings}
+\usepackage{color}
+\usepackage{feynmp-auto}
+\DeclareGraphicsRule{*}{mps}{*}{} % for being able to read the produced file
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\usepackage{tcolorbox}
+\usepackage[framemethod=TikZ]{mdframed}
+\graphicspath{{figures/}} % Location of the graphics files
+\usepackage{booktabs} % Top and bottom rules for table
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+\usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
+\usepackage{wrapfig} % Allows wrapping text around tables and figures
 
 \usepackage{cite}
 
@@ -63,10 +110,10 @@ Thus the total coordinate time it takes for a light ray to come back at $r_1$ is
 The total proper time is
 \begin{eqnarray}
 \Delta \tau &=& \sqrt{1-\frac{2M_{0}}{r_E}}\Delta t  \\ \nonumber
-&=& 2d \left(1-\frac{M_{0}}{r_E} - \frac{M_{0}^2}{r_E^2}\right) 
+&=& 2d \left(1-\frac{M_{0}}{r_E} - \frac{M_{0}^2}{2r_E^2}\right) 
 \left[ 1+\frac{2M_{0}}{r_E} - \frac{M_{0}}{r_E}\left( \frac{d}{r_E} - \frac{4M_{0}}{r_E} \right) \right] \\ \nonumber
 &=& 2d
-\left(1 + \frac{M_{0}}{r_E} + \frac{M_{0}^2}{r_E^2} - \frac{M_{0}d}{r_E^2}\right)~.
+\left(1 + \frac{M_{0}}{r_E} + \frac{3}{2}\frac{M_{0}^2}{r_E^2} - \frac{M_{0}d}{r_E^2}\right)~.
 \end{eqnarray}
 
 \subsection{After Shell Crossing}
@@ -167,30 +214,50 @@ Combining them, the total duration in the coordinate time is
 We also need to pay more attention while converting this to proper time.
 \begin{eqnarray}
 \Delta \tau &=& \int_{t_0}^{t_0+\Delta t}
- \sqrt{\left(1-\frac{2M_{1}}{r_1}\right)dt^2 - \left(1-\frac{2M_{1}}{r_1}\right)^{-1}dr^2} 
- \\ \nonumber
+ \sqrt{\left(1-\frac{2M_{1}}{r_1}\right)dt^2 - \left(1-\frac{2M_{1}}{r_1}\right)^{-1}dr^2} \nonumber	
+ \\ 
 &=& \int_{t_0}^{t_0+\Delta t} 
 \sqrt{\left(1 - \frac{2M_{1}}{r_E - \frac{\delta M}{r_E}t}\right) - \frac{\delta M^2}{r_E^2} }
 ~dt \\ \nonumber
-&=& \left(1 - \frac{M_{1}}{r_E} - \frac{\delta M^2}{2r_E^2} - \frac{M_{1}^2}{r_E^2} \right)
-\Delta t \\ \nonumber
-&=& 2d \left( 1 + \frac{M_1}{r_E} + \frac{\delta M}{r_E} -\frac{M_1d}{r_E^2}+ \frac{M_1^2}{r_E^2}+ \frac{\delta M (t_0+2M_1-d/2)}{r_E^2} + \frac{\delta M^2}{2r_E^2} \right)~.
+&=& \left(1 - \frac{M_{1}}{r_E} - \frac{\delta M^2}{2r_E^2} - \frac{M_{1}^2}{2 r_E^2} \right)
+\Delta t \\
+&=& 2d \left( 1 + \frac{M_1}{r_E} + \frac{\delta M}{r_E} -\frac{M_1d}{r_E^2}+ \frac{3}{2} \frac{M_1^2}{r_E^2}+ \frac{\delta M (t_0+2M_1-d/2)}{r_E^2} + \frac{\delta M^2}{2r_E^2} \right). \label{123}
 \end{eqnarray}
 Compare with before shell-crossing:
 \begin{eqnarray}
 \Delta \tau &=& 2d
-\left(1 + \frac{M_{0}}{r_E} + \frac{M_{0}^2}{r_E^2} - \frac{M_{0}d}{r_E^2}\right)~.
+\left(1 + \frac{M_{0}}{r_E} + \frac{3}{2}\frac{M_{0}^2}{r_E^2} - \frac{M_{0}d}{r_E^2}\right)~.
 \end{eqnarray}
 We see that $0$th order, $1=1$, check. $1$st order, $M_0 = M_1+\delta M$, check. $2$nd order there are many terms. First we check the terms independent of $d$ and $t_0$.
 \begin{eqnarray}
-M_1^2+2\delta M M_1 + \frac{\delta M^2}{2} ~?=?~ M_0^2
+\frac{3}{2} M_1^2+2\delta M M_1 + \frac{\delta M^2}{2} = \frac{3}{2} M_0^2	\label{125}
 \end{eqnarray}
 
-{\bf For Darsh:}
+The remaining terms are
 
-{\bf I will be happier if this checks out. Please try to go through all the steps and careful about the expansion to 2nd order.}
+\begin{equation}
+	-\frac{M_0 d}{r_E^2} = - \frac{M_1 d}{r_E^2} + \frac{\delta M t_0}{r_E^2} - \frac{d \delta M}{2r_E^2}
+\end{equation}
 
-{\bf The $t_0$ dependent terms do not have to be exactly zero as $t_0=0$ since we have assumed that $t_0\gg d$, when its value is close to $d$, there are some ambiguities. In principle, this can also cover other terms in this order. But I prefer those to be zero on their own.}
+\begin{tcolorbox}
+If I solve this for $t_0$ it just gives $t_0 = - \frac{d}{2}$. Still not entirely clear to me what this means:p
+\end{tcolorbox}
+
+\underline{NOTE}: if we now take $\frac{\Delta M}{r_e} \rightarrow \frac{\Delta M}{r_e} \left( 1 - \frac{2M_1}{r_e} \right)^\frac{1}{2}$, the only change is in the $\frac{2 \Delta M M_1}{r^2_E}$ term in Eq (\ref{123}) , it just becomes  $\frac{3 \Delta M M_1}{r^2_E}$ and similarly $2 \delta M M_1$ becomes $3 \delta M M_1$ in Eq (\ref{125}) Using this information we can now find what the difference between proper times is. Already we have checked that there is no change upto first order in $\frac{1}{r_E}$, the change in second order is
+
+\begin{tcolorbox}
+\begin{equation}
+	\Delta \tau_{final} - \Delta \tau_{initial} = 2d \left( \frac{1}{2} \frac{d \delta M}{r_E^2} + \frac{3}{2r_E^2} (M_1^2 - M_0^2) + \frac{3M_1 \delta M}{r_E^2} + \frac{\delta M^2}{2r_E^2} + \frac{\delta M t_0}{r^2_E} \right)
+\end{equation}
+\end{tcolorbox}
+
+so there are a bunch of constant terms and a term that grows linearly with $t_0$ the time since shell crossing. As expected this goes to zero if there is no shell crossing which is reassuring. 
+
+%{\bf For Darsh:}
+%
+%{\bf I will be happier if this checks out. Please try to go through all the steps and careful about the expansion to 2nd order.}
+%
+%{\bf The $t_0$ dependent terms do not have to be exactly zero as $t_0=0$ since we have assumed that $t_0\gg d$, when its value is close to $d$, there are some ambiguities. In principle, this can also cover other terms in this order. But I prefer those to be zero on their own.}
 
 
 \acknowledgments
