@@ -1,0 +1,210 @@
+\documentclass[12pt,letterpaper]{JHEP3}
+\pdfoutput=1
+\usepackage{epsfig}
+\usepackage{showkeys}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+%\usepackage[utf8]{inputenc}
+%\usepackage{mathtools}
+%\usepackage{amsmath}
+%\usepackage{tikz}
+%\usepackage{subfigure}
+%\usepackage{color}
+%\input{rgb}
+
+\usepackage{cite}
+
+
+\graphicspath{{Figures/}}
+
+\title{Interferometer Shifts in Supernova Explosions: Note}
+
+\author{
+}
+
+\abstract{
+}
+
+\begin{document}
+
+\section{Calculation}
+
+\subsection{Before Shell Crossing}
+
+Metric:
+\begin{equation}
+ds^2 = -\left(1-\frac{2M_{0}}{r}\right)dt^2 + \frac{dr^2}{1-\frac{2M_{0}}{r}}+r^2d\Omega_2^2~.
+\end{equation}
+Two end-points of an interferometer arm (ignore acceleration):
+\begin{eqnarray}
+r_1(t) &=& r_{E}~, \ \ \ r_2(t) = r_{E}+d~.
+\end{eqnarray}
+$(M_{0}/r_E)$ and $(d/r_E)$ are small numbers. An outgoing null-ray:
+\begin{eqnarray}
+t-t_0 &=& r-r_0 + 2M_{0}\ln\frac{r-2M_{0}}{r_0-2M_{0}} \\ \nonumber
+&=& d + 2M_{0}\frac{d}{r_E} -M_{0}\frac{d}{r_E}
+\left( \frac{d}{r_E}-\frac{4M_{0}}{r_E} \right)~.
+\label{eq-dt1}
+\end{eqnarray}
+In the last step we plug in $r_0=r_E$, $r = r_E+d$, and expanded by large $r_E$ to the second order. We will see that this is at least necessary later. Likewise, an incoming null-ray:
+\begin{eqnarray}
+t-t_0 &=& r_0-r + 2M_{0}\ln\frac{r_0-2M_{0}}{r-2M_{0}} \\ \nonumber
+&=& d + 2M_{0}\frac{d}{r_E} - M_{0}\frac{d}{r_E}
+\left( \frac{d}{r_E}-\frac{4M_{0}}{r_E} \right) ~.
+\end{eqnarray}
+Here we used $r_0 = r_E+d$, $r = r_E$, and again expanded to the first order.
+
+Thus the total coordinate time it takes for a light ray to come back at $r_1$ is
+\begin{equation}
+\Delta t = 2d + 4M_{0}\frac{d}{r_E} - 2M_{0}\frac{d}{r_E}
+\left( \frac{d}{r_E}-\frac{4M_{0}}{r_E} \right)~.
+\end{equation}
+The total proper time is
+\begin{eqnarray}
+\Delta \tau &=& \sqrt{1-\frac{2M_{0}}{r_E}}\Delta t  \\ \nonumber
+&=& 2d \left(1-\frac{M_{0}}{r_E} - \frac{M_{0}^2}{r_E^2}\right) 
+\left[ 1+\frac{2M_{0}}{r_E} - \frac{M_{0}}{r_E}\left( \frac{d}{r_E} - \frac{4M_{0}}{r_E} \right) \right] \\ \nonumber
+&=& 2d
+\left(1 + \frac{M_{0}}{r_E} + \frac{M_{0}^2}{r_E^2} - \frac{M_{0}d}{r_E^2}\right)~.
+\end{eqnarray}
+
+\subsection{After Shell Crossing}
+
+Metric:
+\begin{equation}
+ds^2 = -\left(1-\frac{2M_{1}}{r}\right)dt^2 + \frac{dr^2}{1-\frac{2M_{1}}{r}}+r^2d\Omega_2^2~,
+\end{equation}
+with $(M_{0}-M_{1})=\delta M$ the neutrino shell mass. Assuming that $r_1$ picks crosses the shell at $t=0$, we have
+\begin{eqnarray}
+r_1(t) &=& r_E - \frac{\delta M}{r_E}t~.
+\end{eqnarray}
+
+On the other hand, $r_2$ crosses the shell later. We can only derive that by first knowing the outgoing null-ray:
+\begin{eqnarray}
+t-t_0 = r-r_0 + 2M_{1}\ln\frac{r-2M_{1}}{r_0-2M_{1}}~.
+\label{eq-null1out}
+\end{eqnarray}
+Plugging $t_0=0$, $r_0 = r_1(0) = r_E$, $r = r_2 = r_E+d$, we get the crossing time:
+\begin{eqnarray}
+t_2 &=& d + 2M_1\ln \frac{r_E+d-2M_1}{r_E-2M_1} \\ \nonumber
+&=& d + 2M_1\frac{d}{r_E} - M_1\frac{d}{r_E}\left( \frac{d}{r_E} - \frac{4M_1}{r_E} \right)~.
+\end{eqnarray}
+Then we have
+\begin{eqnarray}
+r_2(t) &=& r_E + d - \frac{\delta M}{r_E+d}(t-t_2)
+\\ \nonumber
+&=& r_E + d - \frac{\delta M}{r_E}(t-d) + \frac{\delta M}{r_E}\frac{d}{r_E}(t-d)
++\frac{2\delta M M_1}{r_E^2}d~.
+\end{eqnarray}
+
+Now, for a light ray that starts from $r_1$ at a later time $t_0$, we solve where $r_2$ crosses the null ray, Eq.~(\ref{eq-null1out}).
+\begin{eqnarray}
+r_0 &=& r_1(t_0) = r_E - \frac{\delta M}{r_E}t_0~, \\
+r &=& r_2(t) = r_E + d - \frac{\delta M}{r_E}(t-d) + \frac{\delta M}{r_E}\frac{d}{r_E}(t-d+2M_1)~.
+\end{eqnarray}
+A further approximation we may use is $t_0\gg d\approx(t-t_0)$. Thus when a term is already second order, we ignore the difference between $t$ and $t_0$. We can then start to solve the crossing time at $r_2$, while carefully keeping all the expansions up to the second order.
+\begin{eqnarray}
+\Delta t_{out}\equiv t - t_0 &=& d - \frac{\delta M}{r_E}(t - t_0 - d)
++ \frac{\delta M}{r_E}\frac{d}{r_E}(t-d+2M_1) \label{eq-SolveCross} \\ \nonumber
+& & + 2M_{1}\ln\left(1+\frac{d}{r_E}-\frac{2M_{1}}{r_E} -\frac{\delta M(t-d)}{r_E^2} \right) 
+\\ \nonumber
+& & - 2M_{1}\ln\left(1-\frac{2M_{1}}{r_E} -\frac{\delta Mt_0}{r_E^2} \right)
+\\ \nonumber
+&=& d - \frac{\delta M}{r_E}(t - t_0 - d)
++ \frac{\delta M}{r_E}\frac{d}{r_E}(t_0+2M_1) \\ \nonumber
+& & + 2M_{1} \left[ \frac{d}{r_E}-\frac{2M_{1}}{r_E} -\frac{\delta M(t-d)}{r_E^2}  - \frac{1}{2} \left( \frac{d}{r_E}-\frac{2M_{1}}{r_E} \right)^2 \right] \\ \nonumber
+& & - 2M_{1} \left( -\frac{2M_{1}}{r_E} -\frac{\delta Mt_0}{r_E^2} - \frac{2M_{1}^2}{r_E^2} \right)~.
+\end{eqnarray}
+
+This leads to
+\begin{eqnarray}
+\Delta t_{out} \left(1 + \frac{\delta M}{r_E}\right) &=& 
+d + 2M_{1}\frac{d}{r_E} - M_{1}\frac{d}{r_E}
+\left( \frac{d}{r_E}-\frac{4M_{1}}{r_E} \right) \\ \nonumber
+& & + \frac{\delta M}{r_E}d + \frac{\delta Md}{r_E^2} (t_0+2M_1)~.
+\end{eqnarray}
+Compare this to Eq.~(\ref{eq-dt1}), there are only three differences, and two of them have clear physical meanings. The last term on the right-hand-side is the total extra distance between the two end-points, since their velocities are slightly different. The extra factor on the left-hand-side comes from the fact that both end-points are falling toward the center with roughly identical velocity, so it takes a light ray less time to go from inside to outside. On the other hand, the outside endpoint did not pick up this velocity at $t=0$, but at $t\sim d$. That leads to the second last term which will cancel the previous factor at the leading order. The last two things will of course reversed in the reflection, while the distance increase stays the same. 
+
+An incoming null-ray:
+\begin{eqnarray}
+t_0 - t = r-r_0 + 2M_{1}\ln\frac{r-2M_{1}}{r_0-2M_{1}}~.
+\end{eqnarray}
+The end points.
+\begin{eqnarray}
+r_0 &=& r_2(t_0) = r_E +d - \frac{\delta M}{r_E}(t_0-d) + \frac{\delta M}{r_E}\frac{d}{r_E}(t_0-d+2M_1) ~, \\
+r &=& r_1(t) = r_E - \frac{\delta M}{r_E}t~.
+\end{eqnarray}
+
+\begin{eqnarray}
+\Delta t_{in} \equiv 
+t-t_0 &=& d + \frac{\delta M}{r_E}(t-t_0+d) + \frac{\delta M}{r_E}\frac{d}{r_E}(t_0-d+2M_1)
+\\ \nonumber
+& & +2M_1\ln\left( 1+\frac{d}{r_E} - \frac{2M_1}{r_E} - \frac{\delta M}{r_E^2}(t_0-d) \right)
+\\ \nonumber
+& & -2M_1\ln\left( 1 - \frac{2M_1}{r_E} - \frac{\delta M}{r_E^2}t \right)
+\end{eqnarray}
+Compare this with Eq.~(\ref{eq-SolveCross}), the log terms are identical up to the higher order difference in $t$ and $t_0$ which we can ignore.
+\begin{eqnarray}
+\Delta t_{in}\left(1-\frac{\delta M}{r_E}\right) &=& 
+d + 2M_{1}\frac{d}{r_E} - M_{1}\frac{d}{r_E}
+\left( \frac{d}{r_E}-\frac{4M_{1}}{r_E} \right) \\ \nonumber
+& & + \frac{\delta M}{r_E}d + \frac{\delta Md}{r_E^2} (t_0-d+2M_1)~.
+\end{eqnarray}
+
+Combining them, the total duration in the coordinate time is
+\begin{eqnarray}
+\Delta t &=& \Delta t_{out} + \Delta t_{in} \\ \nonumber
+&=& d \left(1 - \frac{\delta M}{r_E} + \frac{\delta M^2}{r_E^2} \right) 
+\left[ 1 + \frac{2M_{1}}{r_E} + \frac{\delta M}{r_E} -\frac{M_{1}}{r_E}\left( \frac{d}{r_E}-\frac{4M_{1}}{r_E} \right) + \frac{\delta M (t_0+2M_1)}{r_E^2} \right] \\ \nonumber 
+&+& d \left(1 + \frac{\delta M}{r_E} + \frac{\delta M^2}{r_E^2} \right) 
+\left[ 1 + \frac{2M_{1}}{r_E} + \frac{\delta M}{r_E} -\frac{M_{1}}{r_E}\left( \frac{d}{r_E}-\frac{4M_{1}}{r_E} \right)  + \frac{\delta M (t_0-d+2M_1)}{r_E^2} \right]  \\ \nonumber
+&=& 2d \left[ 1 + \frac{2M_{1}}{r_E} + \frac{\delta M}{r_E} -\frac{M_{1}}{r_E}\left( \frac{d}{r_E}-\frac{4M_{1}}{r_E} \right) + \frac{\delta M (t_0+2M_1-d/2)}{r_E^2} +\frac{\delta M^2}{r_E^2} \right]~.
+\end{eqnarray}
+
+
+
+We also need to pay more attention while converting this to proper time.
+\begin{eqnarray}
+\Delta \tau &=& \int_{t_0}^{t_0+\Delta t}
+ \sqrt{\left(1-\frac{2M_{1}}{r_1}\right)dt^2 - \left(1-\frac{2M_{1}}{r_1}\right)^{-1}dr^2} 
+ \\ \nonumber
+&=& \int_{t_0}^{t_0+\Delta t} 
+\sqrt{\left(1 - \frac{2M_{1}}{r_E - \frac{\delta M}{r_E}t}\right) - \frac{\delta M^2}{r_E^2} }
+~dt \\ \nonumber
+&=& \left(1 - \frac{M_{1}}{r_E} - \frac{\delta M^2}{2r_E^2} - \frac{M_{1}^2}{r_E^2} \right)
+\Delta t \\ \nonumber
+&=& 2d \left( 1 + \frac{M_1}{r_E} + \frac{\delta M}{r_E} -\frac{M_1d}{r_E^2}+ \frac{M_1^2}{r_E^2}+ \frac{\delta M (t_0+2M_1-d/2)}{r_E^2} + \frac{\delta M^2}{2r_E^2} \right)~.
+\end{eqnarray}
+Compare with before shell-crossing:
+\begin{eqnarray}
+\Delta \tau &=& 2d
+\left(1 + \frac{M_{0}}{r_E} + \frac{M_{0}^2}{r_E^2} - \frac{M_{0}d}{r_E^2}\right)~.
+\end{eqnarray}
+We see that $0$th order, $1=1$, check. $1$st order, $M_0 = M_1+\delta M$, check. $2$nd order there are many terms. First we check the terms independent of $d$ and $t_0$.
+\begin{eqnarray}
+M_1^2+2\delta M M_1 + \frac{\delta M^2}{2} ~?=?~ M_0^2
+\end{eqnarray}
+
+{\bf For Darsh:}
+
+{\bf I will be happier if this checks out. Please try to go through all the steps and careful about the expansion to 2nd order.}
+
+{\bf The $t_0$ dependent terms do not have to be exactly zero as $t_0=0$ since we have assumed that $t_0\gg d$, when its value is close to $d$, there are some ambiguities. In principle, this can also cover other terms in this order. But I prefer those to be zero on their own.}
+
+
+\acknowledgments
+
+We thank XXX for useful discussions. 
+\appendix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{utcaps}
+\bibliography{all_active}
+
+\appendix
+
+\end{document}
+
+
